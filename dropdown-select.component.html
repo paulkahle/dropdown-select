@@ -1,0 +1,21 @@
+<div tabindex="0" #dropdown class="dropdown-button min-fit">
+  <div class="dropdown-label">{{label}}</div>
+  <ul class="dropdown-content">
+    <li class="item" [attr.selected]="allSelected">
+      <label class="checkbox">
+        <input type="checkbox" [checked]="allSelected ? 'checked' : null" [attr.partial]="allPartial" (click)="toggleAll();" />
+        <span class="icon _mrs"></span>
+        <span *ngIf="allIcon" class="u-supre-icon {{allIcon}}"></span>
+        {{allLabel}}
+      </label>
+    </li>
+    <li *ngFor="let option of options" class="item" [attr.selected]="option.selected">
+      <label class="checkbox">
+        <input type="checkbox" [checked]="option.selected ? 'checked' : null" (click)="toggleOption(option);" />
+        <span class="icon _mrs"></span>
+        <span *ngIf="option.icon" class="u-supre-icon {{option.icon}}"></span>
+        {{option.label}}
+      </label>
+    </li>
+  </ul>
+</div>

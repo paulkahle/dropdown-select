@@ -1,0 +1,88 @@
+<h3>Dropdown Select</h3>
+<p style="font-size:12px;margin-bottom:1em;">This is a mutiselect dropdown with built-in funtionality for selecting and deselecting all options.  The all option is completely managed by the component itself.</p>
+
+<form [formGroup]="form">
+  Heroes: {{model.heroes.join(',')}}
+  <supre-dropdown-select
+    formControlName="heroes"
+    allLabel="All Star Wars Heroes"
+    prompt="Select Start Wars Heroes"
+    [options]="availableHeroes">
+  </supre-dropdown-select>
+
+  <h4 style="margin-top:2em">Treatment of Empty Selected Values</h4>
+  <p style="font-size:12px;margin-bottom:1em;">Sometimes you may want to treat an empty value as "All". Setting `emptyValueMode="all"` will show all selected if `value` is empty
+  and set value to an empty array when all options are selected. If no options are selected `value` will contain a single value determined by the `noneSelectedValue` property which defaults to -1.</p>
+
+  Villains: {{model.villains.join(',')}}
+  <supre-dropdown-select
+    emptyValueMode="all"
+    noneSelectedValue="none"
+    formControlName="villains"
+    allLabel="All Star Wars Villains"
+    prompt="Select Star Wars Villain"
+    [options]="availableVillains">
+  </supre-dropdown-select>
+
+  <h4 style="margin-top:2em">Custom Label Function</h4>
+  <p style="font-size:12px;margin-bottom:1em;">You can specify a custom label function for the dropdown button.
+    It accepts two parameters: 1. selectedoptions : array of selected options, 2. allSelected : boolean value if all are selected.</p>
+
+    Planets: {{model.planets.join(',')}}
+    <supre-dropdown-select
+      [labelFn]="planelLabelFn"
+      formControlName="planets"
+      allLabel="All Planets"
+      [options]="availablePlanets">
+    </supre-dropdown-select>
+
+  <h4 style="margin-top:2em">Trigger Events</h4>
+  <p style="font-size:12px;margin-bottom:1em;">Set an openTrigger and closeTrigger to control if the dropdown opens
+    on hover or click.  The default openTrigger is 'click' and closeTrigger is 'hover'.</p>
+
+    <h6>Open=Click, Close=Hover (default)</h6>
+    <supre-dropdown-select style="width:300px"
+      prompt="Select Droid"
+      openTrigger="click"
+      closeTrigger="hover"
+      allLabel="All Droids"
+      [options]="availableDroids">
+    </supre-dropdown-select>
+
+    <h6>Open=Click, Close=Click</h6>
+    <supre-dropdown-select
+      prompt="Select Droid"
+      openTrigger="click"
+      closeTrigger="click"
+      allLabel="All Droids"
+      [options]="availableDroids">
+    </supre-dropdown-select>
+
+    <h6>Open=Hover, Close=Hover</h6>
+    <supre-dropdown-select
+      prompt="Select Droid"
+      openTrigger="hover"
+      closeTrigger="hover"
+      allLabel="All Droids"
+      [options]="availableDroids">
+    </supre-dropdown-select>
+
+    <h6>Open=Hover, Close=Click</h6>
+    <supre-dropdown-select
+      prompt="Select Droid"
+      openTrigger="hover"
+      closeTrigger="click"
+      allLabel="All Droids"
+      [options]="availableDroids">
+    </supre-dropdown-select>
+
+  <h4 style="margin-top:2em">Hiding the "All" option</h4>
+    <p style="font-size:12px;margin-bottom:1em;">You can hide the "All" option by setting showAllOption=false</p>
+    <supre-dropdown-select
+      emptyValue="none"
+      [showAllOption]="false"
+      prompt="Select Start Wars Villain"
+      [options]="availableVillains">
+    </supre-dropdown-select>
+
+</form>
